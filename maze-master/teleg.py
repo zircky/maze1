@@ -70,6 +70,8 @@ def play_maze(message):
             bot.send_message(message.chat.id, 'Здравствуйте! Чтобы посмеяться введите любую цифру:')
         elif message.text == 'Maze':
             bot.send_message(message.chat.id, 'fefsrgergr')
+        elif message.text == 'Back':
+            bot.send_message(message.chat.id, reply_markup=markup)
 
     if message.text.lower() in '123456789':
         bot.send_message(message.chat.id, list_of_jokes[0])
