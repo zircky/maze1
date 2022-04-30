@@ -1,6 +1,6 @@
 import pygame, controls
 from gun import Gun
-
+from pygame.sprite import  Group
 
 def run():
     dis = pygame.display
@@ -9,13 +9,15 @@ def run():
     dis.set_caption("Космические защитники")
     bg_color = (0, 0, 0)
     gun = Gun(screen)
+    bullets = Group()
+    inos = Group()
+    controls.create_army(screen, inos)
 
     while True:
-        controls.events(gun)
+        controls.events(screen, gun, bullets)
         gun.update_gun()
-        screen.fill(bg_color)
-        gun.output()
-        dis.flip()
-
+        controls.update(bg_color, screen, gun, inos, bullets)
+        controls.update_bullets(bullets)
+        controls.update_inos(inos)
 
 run()
